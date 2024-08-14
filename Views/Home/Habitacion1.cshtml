@@ -1,0 +1,22 @@
+@{
+    int sala = ViewBag.Sala;
+    ViewData["Title"] = $"Habitación {sala}";
+}
+<link rel="stylesheet" href="~/css/style.css">
+
+<div class="container">
+    <h1>Habitación @sala</h1>
+    <p>Descripción de lo que se encuentra en la sala...</p>
+    <img src="~/img/doner.png" alt="Pista" />
+    <form method="post" action='@Url.Action("Habitacion", "Home", new { sala = sala })'>
+        <input type="text" name="clave" placeholder="Ingresa la clave aquí" />
+        <button type="submit">VALIDAR</button>
+    </form>
+    <button onclick="alert('Pista 1: doner kebab')">Pista 1</button>
+    <button onclick="alert('Pista 2: nacho')">Pista 2</button>
+    @if(ViewBag.Error != null)
+    {
+        <div class="error-message">@ViewBag.Error</div>
+    }
+</div>
+
